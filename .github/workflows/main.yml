@@ -40,4 +40,4 @@ jobs:
             docker pull ${{ env.IMAGE }}
             docker stop rhmt-front || true
             docker rm rhmt-front || true
-            docker run -d --restart=always -p 8083:8080 --name rhmt-front ${{ env.IMAGE }}
+            docker run -d --restart=always -p 8084:8080 --name rhmt-front ${{ env.IMAGE }}
