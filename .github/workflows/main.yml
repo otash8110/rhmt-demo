@@ -6,7 +6,7 @@ on:
       - master
 
 env:
-  IMAGE: ${{ secrets.CI_REGISTRY }}rhmt-front:${{ github.sha }}
+  IMAGE: ${{ secrets.CI_REGISTRY }}rhmt-front:latest
 
 jobs:
   build:
