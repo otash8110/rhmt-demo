@@ -6,7 +6,7 @@ on:
       - master
 
 env:
-  IMAGE: ${{ secrets.CI_REGISTRY }}rhmt-front:latest
+  IMAGE: ${{ secrets.CI_REGISTRY }}rhmt-demo:latest
 
 jobs:
   build:
@@ -38,6 +38,6 @@ jobs:
           key: ${{ secrets.DEPLOY_SSH_KEY }}
           script: |
             docker pull ${{ env.IMAGE }}
-            docker stop rhmt-front || true
-            docker rm rhmt-front || true
-            docker run -d --restart=always -p 8084:8080 --name rhmt-front ${{ env.IMAGE }}
+            docker stop rhmt-demo || true
+            docker rm rhmt-demo || true
+            docker run -d --restart=always -p 8085:8080 --name rhmt-demo ${{ env.IMAGE }}
