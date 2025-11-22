@@ -61,6 +61,7 @@ const { modeModel, modes } = useThemeMode();
 
 <template>
   <div class="page">
+  <h1>RHMT DEMO</h1>
     <div style="display: flex; align-items: center; gap: 1rem; width: 100%;">
       <LangSwitcher />
 
