@@ -1,22 +1,30 @@
-FROM node:lts-alpine
+# ---------------------------
+# 1) Build stage
+# ---------------------------
+FROM node:lts-alpine AS build
 
-# install simple http server for serving static content
-RUN npm install -g http-server
-
-# make the 'app' folder the current working directory
 WORKDIR /app
 
-# copy both 'package.json' and 'package-lock.json' (if available)
 COPY package*.json ./
+RUN npm ci
 
-# install project dependencies
-RUN npm install
-
-# copy project files and folders to the current working directory (i.e. 'app' folder)
 COPY . .
-
-# build app for production with minification
 RUN npm run build
 
+
+# ---------------------------
+# 2) Production stage
+# ---------------------------
+FROM node:lts-alpine
+
+# Install static file server
+RUN npm install -g http-server
+
+WORKDIR /app
+
+# Copy only the built files
+COPY --from=build /app/dist ./dist
+
 EXPOSE 8080
-CMD [ "http-server", "dist" ]
+
+CMD ["http-server", "dist", "-p", "8080"]
