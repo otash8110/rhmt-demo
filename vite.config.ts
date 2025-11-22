@@ -38,6 +38,8 @@ export default defineConfig(({ mode }) => {
       },
     ],
 
+    base: '/qr/',
+
     server: {
       open: true,
       port: 1234,
