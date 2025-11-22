@@ -38,7 +38,7 @@ export default defineConfig(({ mode }) => {
       },
     ],
 
-    base: '/qr/',
+    // base: '/qr/',
 
     server: {
       open: true,
