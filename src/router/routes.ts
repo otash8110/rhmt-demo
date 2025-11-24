@@ -12,6 +12,15 @@ const routes: RouteRecordRaw[] = [
   },
 
   {
+    path: '/test',
+    name: 'test-main',
+    component: () => import('@/pages/Example.vue'),
+    meta: {
+      layout: 'Default',
+    },
+  },
+
+  {
     path: '/status/:type',
     name: 'status',
     component: () => import('@/pages/StatusPage.vue'),
